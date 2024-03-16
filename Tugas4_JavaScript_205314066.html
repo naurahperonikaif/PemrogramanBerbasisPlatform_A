@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulir Input</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 500px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+h1 {
+    color: #333;
+    margin-bottom: -20px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+img {
+    width: fit-content;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"],
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #0056b3;
+}
+
+#inputan,
+#pilihan {
+    margin-bottom: 20px;
+}
+
+    </style>
+</head>
+    <img src="naurah peronika.jpeg" alt="Naurah Peronika">
+    <h1> Naurah Peronika</h1>
+    <h2>205314066</h2>
+
+    <form id="myForm" onsubmit="handleFormSubmit(event)">
+        <label for="nama">Nama :</label>
+        <input type="text" id="nama" name="nama" required><br><br>
+        <label for="jumlah">Jumlah Pilihan :</label>
+        <input type = "number" id = "jumlah" name = "jumlah" min = "1" required><br><br>
+        <input type = "submit" value = "Ok">
+    </form>
+    
+    <div id = "inputan"></div>
+    <div id = "pilihan"></div>
+    <button style = "display : none;" id="submitBtn" onclick = "showResult()">Submit</button>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            var jumlah = document.getElementById("jumlah").value;
+            var inputanDiv = document.getElementById("inputan");
+            inputanDiv.innerHTML = "";
+
+            for (var i = 1; i <= jumlah; i++) {
+                var label = document.createElement("label");
+                label.innerHTML = "Teks Tampilan " + i + " : ";
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "teks" + i;
+                input.required = true;
+
+                inputanDiv.appendChild(label);
+                inputanDiv.appendChild(input);
+                inputanDiv.appendChild(document.createElement("br"));
+            }
+
+            var generateButton = document.createElement("button");
+            generateButton.innerHTML = "Submit";
+            generateButton.onclick = function() { generateOptions(jumlah); };
+            inputanDiv.appendChild(generateButton);
+        }
+
+        function generateOptions(jumlah) {
+            var pilihanDiv = document.getElementById("pilihan");
+            pilihanDiv.innerHTML = "";
+
+            var select = document.createElement("select");
+            select.name = "pilihan";
+            select.required = true;
+            pilihanDiv.appendChild(select);
+
+            for (var i = 1; i <= jumlah; i++) {
+                var option = document.createElement("option");
+                option.text = "Pilihan " + i;
+                option.value = "pilihan" + i;
+                select.appendChild(option);
+            }
+
+            var submitBtn = document.getElementById("submitBtn");
+            submitBtn.style.display = "inline-block";
+        }
+
+        function showResult() {
+            var nama = document.getElementById("nama").value;
+            var jumlah = document.getElementById("jumlah").value;
+            var pilihan = document.getElementsByName ("pilihan") [0].value;
+            var teksPilihan = [];
+            for (var i = 1; i <= jumlah; i++) {
+                teksPilihan.push(document.getElementsByName("teks" + i)[0].value);
+            }
+            var result = "Halo, nama saya " + nama + ". Saya mempunyai sejumlah " + jumlah + " pilihan yaitu ";
+            result += teksPilihan.join (", ") + ", dan saya memilih " + pilihan + " . ";
+            alert(result);
+        }
+    </script>
+</body>
+</html>
