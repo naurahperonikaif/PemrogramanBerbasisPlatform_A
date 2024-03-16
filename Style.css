@@ -1,0 +1,76 @@
+/* Mengatur font body, margin, padding, dan background */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fdfdfd; 
+}
+
+/* Mengatur teks h1 dan h2 menjadi center dan warna */
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Mengatur teks paragraf menjadi rata kanan */
+p {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+/* Memberikan efek teks tebal pada kelas .bold */
+.bold {
+    font-weight: bold;
+}
+
+/* Mengatur gambar agar menjadi responsif */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+/* Mengatur tabel */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1px; 
+    margin-bottom: 20px;
+    background-color: #f7e7e7; 
+    box-shadow: 4 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mengatur warna kolom tabel */
+th, td {
+    border: 1px solid #252525; 
+    padding: 12px;
+    text-align: left;
+}
+
+/* Efek hover pada sel data */
+td:hover {
+    background-color: #f9f9f9;
+}
+
+/* Mengatur header kolom */
+th {
+    background-color: #f2f2f2; 
+    border: 1px solid #ddd; 
+    padding: 12px; 
+    text-align: left;
+}
+
+/* Mengatur sel data */
+td {
+    border: 1px solid #ddd; 
+    padding: 12px; 
+    text-align: left;
+}
+
+/* Efek hover pada sel data */
+td:hover {
+    background-color: #f9f9f9; 
+}
